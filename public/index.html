@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Chat I/O</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-database.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Margarine' rel='stylesheet'>
+    
+</head>
+<script type="text/javascript">
+    // Import the functions you need from the SDKs you need
+    // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyB9WuT0FuxZhiD0Q2g3wIrmcARl2ICaTNk",
+        authDomain: "nahep-58fec.firebaseapp.com",
+        databaseURL: "https://nahep-58fec-default-rtdb.firebaseio.com",
+        projectId: "nahep-58fec",
+        storageBucket: "nahep-58fec.appspot.com",
+        messagingSenderId: "666260267591",
+        appId: "1:666260267591:web:22a437e6c068ef29578762"
+    };
+
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+
+</script>
+<body>
+
+    <div class = "container-fluid">
+        <div class="header clearfix">
+          <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand mb-0 h1"><img class = "logo" src = "img/io_logo.png"></span>
+              <p id = "user-name"></p>
+          </nav>
+        </div>
+      
+
+      <div class = "chat">
+        <div class = "chat-window" id = "chat-window">
+          <ul id = "messages">
+            <li class="msg">
+              <span class = "msg-span">
+                <i class = "name">Salman: </i> Welcome to Google I/O Extended Chennai 🚀
+              </span>
+            </li>
+          </ul>
+          <form id = "messageForm" autocomplete="off">
+            <input type = "text" id = "msg-input" placeholder="Enter a message">
+            <button id = "msg-btn" type = "submit">Send</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="modal" id="modal-user" tabindex="-1" style="background: #000000d4">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form id="user-reg">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                </div>
+                <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="recipient-name" class="col-form-label">Your Name:</label>
+                            <input type="text" class="form-control" id="recipient-name">
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary"   type="submit" >Save</button>
+                </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <script src='./js/main.js'></script>
+<script>
+
+
+
+    document.addEventListener('DOMContentLoaded',function () {
+       const nuser = localStorage.getItem('user');
+       console.log(nuser)
+       if (nuser != null || ''){
+           document.getElementById('modal-user').style.display = 'none'
+       }else{
+           document.getElementById('modal-user').style.display = 'block'
+           document.addEventListener('submit', function () {
+               let userName = document.getElementById('recipient-name').value
+               if (userName){
+                   localStorage.setItem('user', userName)
+               }
+           })
+       }
+    });
+</script>
+</body>
+
+<footer id = "footer" class="page-footer font-small blue"></br>
+    <div class="footer-copyright text-center py-3">Google I/O Extended Chennai 2023
+    </div>
+</footer>
+</html>
